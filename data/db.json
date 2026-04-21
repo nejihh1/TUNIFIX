@@ -1,0 +1,317 @@
+{
+  "version": 1,
+  "clients": [
+    {
+      "id": "client-demo",
+      "role": "client",
+      "fullName": "Client Demo",
+      "email": "client@tunifix.tn",
+      "phone": "20111222",
+      "city": "Monastir",
+      "password": "Client@123",
+      "createdAt": "2026-04-20T21:01:41.379Z"
+    },
+    {
+      "id": "client-ccfd9061e68a4307",
+      "role": "client",
+      "fullName": "neji hadj hassine",
+      "email": "nejihh@yahoo.fr",
+      "phone": "21653488438",
+      "city": "nejihh@yahoo.fr",
+      "password": "Fixly123!",
+      "createdAt": "2026-04-20T21:39:53.314Z"
+    }
+  ],
+  "technicians": [
+    {
+      "id": "tech-ali-ben-salah",
+      "role": "technician",
+      "fullName": "Ali Ben Salah",
+      "email": "ali@tunifix.tn",
+      "phone": "22111222",
+      "city": "Monastir",
+      "specialty": "Électricité",
+      "experience": "5 ans d’expérience",
+      "password": "Tech@123",
+      "createdAt": "2026-04-20T21:01:41.379Z",
+      "averageRating": 5,
+      "reviewCount": 1
+    },
+    {
+      "id": "tech-sami-jlassi",
+      "role": "technician",
+      "fullName": "Sami Jlassi",
+      "email": "sami@tunifix.tn",
+      "phone": "25111222",
+      "city": "Sousse",
+      "specialty": "Plomberie",
+      "experience": "7 ans d’expérience",
+      "password": "Tech@123",
+      "createdAt": "2026-04-20T21:01:41.379Z",
+      "averageRating": 4,
+      "reviewCount": 1
+    },
+    {
+      "id": "tech-mariem-trabelsi",
+      "role": "technician",
+      "fullName": "Mariem Trabelsi",
+      "email": "mariem@tunifix.tn",
+      "phone": "27111222",
+      "city": "Tunis",
+      "specialty": "Climatisation",
+      "experience": "6 ans d’expérience",
+      "password": "Tech@123",
+      "createdAt": "2026-04-20T21:01:41.379Z",
+      "averageRating": 5,
+      "reviewCount": 1
+    },
+    {
+      "id": "tech-bffd67a12a95ad1c",
+      "role": "technician",
+      "fullName": "neji hadj hassine",
+      "email": "ali@fixly.tn",
+      "phone": "21653488438",
+      "city": "nejihh@yahoo.fr",
+      "specialty": "Plomberie",
+      "experience": "4",
+      "profileImage": "",
+      "password": "Fixly123!",
+      "createdAt": "2026-04-20T21:40:53.586Z",
+      "averageRating": 4,
+      "reviewCount": 1
+    }
+  ],
+  "reviews": [
+    {
+      "id": "review-216aa19b14e1cb66",
+      "technicianId": "tech-ali-ben-salah",
+      "clientId": "seed-a",
+      "requestId": "request-seed-reviewed",
+      "name": "Nadia",
+      "rating": 5,
+      "comment": "Service rapide et professionnel.",
+      "createdAt": "2026-04-20T21:01:41.379Z"
+    },
+    {
+      "id": "review-36f4d17ff60990d5",
+      "technicianId": "tech-sami-jlassi",
+      "clientId": "seed-b",
+      "requestId": "request-seed-2",
+      "name": "Maher",
+      "rating": 4,
+      "comment": "Très bon travail, ponctuel.",
+      "createdAt": "2026-04-20T21:01:41.379Z"
+    },
+    {
+      "id": "review-ea3bb90ccba47f86",
+      "technicianId": "tech-mariem-trabelsi",
+      "clientId": "seed-c",
+      "requestId": "request-seed-3",
+      "name": "Sarra",
+      "rating": 5,
+      "comment": "Excellente technicienne.",
+      "createdAt": "2026-04-20T21:01:41.379Z"
+    },
+    {
+      "id": "review-3c93dc5d28914c54",
+      "technicianId": "tech-bffd67a12a95ad1c",
+      "clientId": "client-ccfd9061e68a4307",
+      "requestId": "request-274e35ffd1f77037",
+      "name": "neji hadj hassine",
+      "rating": 4,
+      "comment": "vccvcvxcvxc  dxvcxcvcvxcvxcvcxx",
+      "createdAt": "2026-04-20T21:41:16.162Z"
+    }
+  ],
+  "requests": [
+    {
+      "id": "request-274e35ffd1f77037",
+      "clientId": "client-ccfd9061e68a4307",
+      "fullName": "neji hadj hassine",
+      "email": "nejihh@yahoo.fr",
+      "phone": "21653488438",
+      "city": "ksar hellal",
+      "service": "Plomberie",
+      "urgency": "Normale",
+      "title": "dffdfdfdsd",
+      "description": "dfdffddfdfdfdfdfdfdf",
+      "images": [],
+      "status": "completed",
+      "assignedTechnicianId": "tech-bffd67a12a95ad1c",
+      "assignedTechnicianName": "neji hadj hassine",
+      "reviewByClientId": "client-ccfd9061e68a4307",
+      "createdAt": "2026-04-20T21:40:07.587Z"
+    },
+    {
+      "id": "request-seed-reviewed",
+      "clientId": "client-demo",
+      "fullName": "Client Demo",
+      "email": "client@tunifix.tn",
+      "phone": "20111222",
+      "city": "Monastir",
+      "service": "Électricité",
+      "urgency": "Normale",
+      "title": "Prise murale en panne",
+      "description": "La prise ne fonctionne plus dans le salon.",
+      "images": [],
+      "status": "completed",
+      "assignedTechnicianId": "tech-ali-ben-salah",
+      "assignedTechnicianName": "Ali Ben Salah",
+      "reviewByClientId": "client-demo",
+      "createdAt": "2026-04-20T21:01:41.379Z"
+    },
+    {
+      "id": "request-seed-pending-review",
+      "clientId": "client-demo",
+      "fullName": "Client Demo",
+      "email": "client@tunifix.tn",
+      "phone": "20111222",
+      "city": "Monastir",
+      "service": "Plomberie",
+      "urgency": "Urgente",
+      "title": "Fuite sous évier",
+      "description": "J’ai une fuite sous l’évier de la cuisine.",
+      "images": [],
+      "status": "completed",
+      "assignedTechnicianId": "tech-sami-jlassi",
+      "assignedTechnicianName": "Sami Jlassi",
+      "reviewByClientId": null,
+      "createdAt": "2026-04-20T21:01:41.379Z"
+    },
+    {
+      "id": "request-seed-open",
+      "clientId": "client-demo",
+      "fullName": "Client Demo",
+      "email": "client@tunifix.tn",
+      "phone": "20111222",
+      "city": "Monastir",
+      "service": "Climatisation",
+      "urgency": "Normale",
+      "title": "Climatiseur à vérifier",
+      "description": "Besoin d’un diagnostic pour la clim.",
+      "images": [],
+      "status": "open",
+      "assignedTechnicianId": null,
+      "assignedTechnicianName": null,
+      "reviewByClientId": null,
+      "createdAt": "2026-04-20T21:01:41.379Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-ae95ab47edd3226c",
+      "userId": "tech-bffd67a12a95ad1c",
+      "email": "ali@fixly.tn",
+      "subject": "Nouveau avis client",
+      "message": "neji hadj hassine a laissé une note de 4/5 sur TUNIFIX.",
+      "createdAt": "2026-04-20T21:41:16.163Z"
+    },
+    {
+      "id": "notif-1dc34a2f50c480cb",
+      "userId": "client-ccfd9061e68a4307",
+      "email": "nejihh@yahoo.fr",
+      "subject": "Avis publié",
+      "message": "Votre avis pour neji hadj hassine a été enregistré.",
+      "createdAt": "2026-04-20T21:41:16.162Z"
+    },
+    {
+      "id": "notif-7cfc844b3a00a157",
+      "userId": "client-ccfd9061e68a4307",
+      "email": "nejihh@yahoo.fr",
+      "subject": "Nouvelle connexion",
+      "message": "Une connexion a été détectée sur votre compte neji hadj hassine.",
+      "createdAt": "2026-04-20T21:41:04.032Z"
+    },
+    {
+      "id": "notif-2b103ca08dbf984c",
+      "userId": "tech-bffd67a12a95ad1c",
+      "email": "ali@fixly.tn",
+      "subject": "Mission terminée",
+      "message": "Vous avez marqué la mission \"dffdfdfdsd\" comme terminée.",
+      "createdAt": "2026-04-20T21:40:57.401Z"
+    },
+    {
+      "id": "notif-36425efaa282e359",
+      "userId": "client-ccfd9061e68a4307",
+      "email": "nejihh@yahoo.fr",
+      "subject": "Mission terminée",
+      "message": "La mission \"dffdfdfdsd\" est marquée comme terminée. Vous pouvez maintenant noter le technicien depuis votre tableau de bord.",
+      "createdAt": "2026-04-20T21:40:57.401Z"
+    },
+    {
+      "id": "notif-c4a1ba2f457f8e6c",
+      "userId": "client-ccfd9061e68a4307",
+      "email": "nejihh@yahoo.fr",
+      "subject": "Un technicien a accepté votre demande",
+      "message": "neji hadj hassine a accepté votre demande \"dffdfdfdsd\".",
+      "createdAt": "2026-04-20T21:40:56.717Z"
+    },
+    {
+      "id": "notif-df048e81d80f3c07",
+      "userId": "tech-bffd67a12a95ad1c",
+      "email": "ali@fixly.tn",
+      "subject": "Mission acceptée",
+      "message": "Vous avez accepté la mission \"dffdfdfdsd\".",
+      "createdAt": "2026-04-20T21:40:56.717Z"
+    },
+    {
+      "id": "notif-8e9892d2ed5dcfb4",
+      "userId": "tech-bffd67a12a95ad1c",
+      "email": "ali@fixly.tn",
+      "subject": "Bienvenue sur TUNIFIX",
+      "message": "Bonjour neji hadj hassine, votre compte technicien a été créé avec succès.",
+      "createdAt": "2026-04-20T21:40:53.586Z"
+    },
+    {
+      "id": "notif-4083a282105fa0e7",
+      "userId": "client-ccfd9061e68a4307",
+      "email": "nejihh@yahoo.fr",
+      "subject": "Demande créée",
+      "message": "Votre demande \"dffdfdfdsd\" a été publiée.",
+      "createdAt": "2026-04-20T21:40:07.587Z"
+    },
+    {
+      "id": "notif-68285c37d5e93658",
+      "userId": "client-ccfd9061e68a4307",
+      "email": "nejihh@yahoo.fr",
+      "subject": "Bienvenue sur TUNIFIX",
+      "message": "Bonjour neji hadj hassine, votre compte client a été créé avec succès.",
+      "createdAt": "2026-04-20T21:39:53.315Z"
+    },
+    {
+      "id": "notif-16ba9a8ba9880480",
+      "userId": "client-demo",
+      "email": "client@tunifix.tn",
+      "subject": "Réinitialisation du mot de passe",
+      "message": "Bonjour Client Demo,\n\nUn lien de réinitialisation du mot de passe a été demandé pour votre compte TUNIFIX.\n\nLien : http://localhost:3000/reset-password.html?token=reset-3b76d3b46ca794ef\n\nCe lien expire dans 1 heure.",
+      "createdAt": "2026-04-20T21:01:57.351Z"
+    },
+    {
+      "id": "notif-8bc53386c5dcbc49",
+      "userId": "client-demo",
+      "email": "client@tunifix.tn",
+      "subject": "Nouvelle connexion",
+      "message": "Une connexion a été détectée sur votre compte Client Demo.",
+      "createdAt": "2026-04-20T21:01:53.785Z"
+    },
+    {
+      "id": "notif-df2a36445f374bb1",
+      "userId": "client-demo",
+      "email": "client@tunifix.tn",
+      "subject": "Nouvelle connexion",
+      "message": "Une connexion a été détectée sur votre compte Client Demo.",
+      "createdAt": "2026-04-20T21:01:47.548Z"
+    }
+  ],
+  "sessions": {
+    "token-7880ad5207f36989": {
+      "userId": "client-demo",
+      "expiresAt": "2026-04-27T21:01:47.548Z"
+    },
+    "token-07bb6bfd67660cbd": {
+      "userId": "client-demo",
+      "expiresAt": "2026-04-27T21:01:53.785Z"
+    }
+  },
+  "passwordResets": {}
+}

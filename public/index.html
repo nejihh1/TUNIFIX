@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TUNIFIX</title>
+<link href='data:image/svg+xml;utf8,
+  &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"&gt;
+    &lt;rect width="64" height="64" rx="16" fill="%23ffffff"/&gt;
+    &lt;text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
+      font-size="38" font-family="Arial,sans-serif" font-weight="900" fill="%23000000"&gt;F&lt;/text&gt;
+    &lt;circle cx="32" cy="52" r="5" fill="%23e70013"/&gt;
+  &lt;/svg&gt;' rel="icon" type="image/svg+xml"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    :root{
+      --fixly-dark:#083d3c;
+      --fixly-red:#e70013;
+      --fixly-pink:#f3a8c3;
+      --fixly-bg:#f6f8f8;
+      --fixly-text:#103c3b;
+      --fixly-muted:#5f7a79;
+      --card-shadow:0 14px 40px rgba(8,61,60,.08);
+      --card-shadow-hover:0 20px 50px rgba(8,61,60,.14);
+      --radius-xl:30px;
+      --radius-lg:24px;
+      --radius-md:18px;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      background:var(--fixly-bg);
+      color:var(--fixly-text);
+      font-family:Arial,sans-serif;
+    }
+
+    .navbar-custom{
+      background:rgba(243,168,195,.92);
+      backdrop-filter:blur(8px);
+      padding:16px 0;
+      border-bottom:1px solid rgba(255,255,255,.35);
+    }
+
+    .logo-fixly{
+      font-weight:900;
+      letter-spacing:-1px;
+      color:var(--fixly-dark);
+      margin:0;
+      line-height:1;
+    }
+
+    .lang-select{
+      width:auto;
+      min-width:140px;
+      border-radius:999px;
+      font-weight:600;
+      border:none;
+      box-shadow:none;
+      padding-left:18px;
+      padding-right:36px;
+    }
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.85), transparent 35%),
+        linear-gradient(135deg, #f6bfd4 0%, #f3a8c3 35%, #f8d0df 100%);
+      padding:88px 0 72px;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      right:-120px;
+      top:-80px;
+      width:340px;
+      height:340px;
+      background:rgba(255,255,255,.18);
+      border-radius:50%;
+      filter:blur(5px);
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:-80px;
+      bottom:-120px;
+      width:260px;
+      height:260px;
+      background:rgba(255,255,255,.16);
+      border-radius:50%;
+    }
+
+    .hero-title{
+      font-size:3.3rem;
+      line-height:1.02;
+      font-weight:900;
+      color:var(--fixly-dark);
+      letter-spacing:-1.5px;
+      margin-bottom:20px;
+      max-width:640px;
+    }
+
+    .hero-subtitle{
+      font-size:1.08rem;
+      color:#214c4a;
+      max-width:620px;
+      margin-bottom:26px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-bottom:22px;
+    }
+
+    .btn-main{
+      background:var(--fixly-dark);
+      color:white;
+      border:none;
+      border-radius:999px;
+      padding:13px 24px;
+      font-weight:700;
+      box-shadow:0 10px 24px rgba(8,61,60,.18);
+      transition:.25s ease;
+      text-decoration:none;
+    }
+
+    .btn-main:hover{
+      background:#0d5251;
+      color:white;
+      transform:translateY(-1px);
+    }
+
+    .btn-outline-custom{
+      background:rgba(255,255,255,.72);
+      color:var(--fixly-dark);
+      border:1.5px solid rgba(8,61,60,.15);
+      border-radius:999px;
+      padding:13px 24px;
+      font-weight:700;
+      text-decoration:none;
+      transition:.25s ease;
+    }
+
+    .btn-outline-custom:hover{
+      background:white;
+      color:var(--fixly-dark);
+      transform:translateY(-1px);
+    }
+
+    .mini-badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .mini-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(255,255,255,.8);
+      padding:11px 15px;
+      border-radius:999px;
+      box-shadow:0 8px 20px rgba(0,0,0,.06);
+      font-weight:700;
+      color:var(--fixly-dark);
+    }
+
+    .hero-visual{
+      position:relative;
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,.7);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,.55);
+      border-radius:36px;
+      padding:18px;
+      box-shadow:0 20px 50px rgba(0,0,0,.10);
+    }
+
+    .hero-card img{
+      width:100%;
+      height:460px;
+      object-fit:cover;
+      border-radius:26px;
+      display:block;
+    }
+
+    .floating-stat{
+      position:absolute;
+      background:white;
+      border-radius:20px;
+      box-shadow:var(--card-shadow);
+      padding:14px 16px;
+      min-width:180px;
+    }
+
+    .floating-stat.top{
+      top:18px;
+      left:-18px;
+    }
+
+    .floating-stat.bottom{
+      right:-8px;
+      bottom:22px;
+    }
+
+    .floating-stat .small{
+      display:block;
+      font-size:.82rem;
+      color:var(--fixly-muted);
+      margin-bottom:4px;
+    }
+
+    .floating-stat strong{
+      font-size:1rem;
+      color:var(--fixly-dark);
+    }
+
+    .section{
+      padding:80px 0;
+    }
+
+    .section-title{
+      font-size:2.2rem;
+      font-weight:900;
+      color:var(--fixly-dark);
+      letter-spacing:-1px;
+      margin-bottom:14px;
+    }
+
+    .section-subtitle{
+      color:var(--fixly-muted);
+      max-width:680px;
+      margin:0 auto 34px;
+    }
+
+    .service-card{
+      background:white;
+      border:none;
+      border-radius:28px;
+      box-shadow:var(--card-shadow);
+      height:100%;
+      transition:.28s ease;
+      overflow:hidden;
+    }
+
+    .service-card:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--card-shadow-hover);
+    }
+
+    .service-card .card-body{
+      padding:28px 24px;
+    }
+
+    .service-icon-wrap{
+      width:64px;
+      height:64px;
+      border-radius:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg, rgba(243,168,195,.22), rgba(8,61,60,.08));
+      margin:0 auto 16px;
+    }
+
+    .service-icon{
+      font-size:1.8rem;
+      color:var(--fixly-dark);
+      line-height:1;
+    }
+
+    .service-card h5{
+      font-weight:800;
+      margin-bottom:8px;
+      color:var(--fixly-dark);
+    }
+
+    .service-card p{
+      color:var(--fixly-muted);
+      margin-bottom:0;
+      font-size:.96rem;
+    }
+
+    .premium-band{
+      background:linear-gradient(135deg, #083d3c 0%, #115b59 100%);
+      color:white;
+      border-radius:42px 42px 0 0;
+      padding:82px 0 74px;
+      margin-top:14px;
+    }
+
+    .space-card{
+      border:none;
+      border-radius:28px;
+      height:100%;
+      background:white;
+      color:var(--fixly-text);
+      box-shadow:0 18px 40px rgba(0,0,0,.12);
+    }
+
+    .space-card .card-body{
+      padding:30px;
+    }
+
+    .space-card h3{
+      font-weight:900;
+      margin-bottom:12px;
+      color:var(--fixly-dark);
+    }
+
+    .space-card p{
+      color:var(--fixly-muted);
+    }
+
+    .space-card ul{
+      padding-left:18px;
+      color:var(--fixly-dark);
+      margin-bottom:20px;
+    }
+
+    .space-card li{
+      margin-bottom:8px;
+    }
+
+    .footer-main{
+      background:#0b2f2e;
+      color:white;
+      padding:56px 0 20px;
+    }
+
+    .footer-main h5,
+    .footer-main h6{
+      font-weight:800;
+      margin-bottom:16px;
+    }
+
+    .footer-main p{
+      color:#d7e6e5;
+    }
+
+    .footer-main ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+      columns:2;
+      column-gap:24px;
+    }
+
+    .footer-main li{
+      margin-bottom:10px;
+      color:#d7e6e5;
+      break-inside:avoid;
+    }
+
+    .social-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .social-links a{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:white;
+      text-decoration:none;
+      font-weight:700;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      transition:.25s ease;
+    }
+
+    .social-links a:hover{
+      background:rgba(243,168,195,.16);
+      color:#fff;
+    }
+
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.12);
+      margin-top:30px;
+      padding-top:16px;
+      text-align:center;
+      color:#cdd9d8;
+    }
+
+    @media (max-width: 991.98px){
+      .hero-title{
+        font-size:2.6rem;
+      }
+
+      .floating-stat{
+        position:static;
+        margin-top:14px;
+      }
+
+      .hero-card img{
+        height:360px;
+      }
+    }
+
+    @media (max-width: 575.98px){
+      .hero-title{
+        font-size:2.1rem;
+      }
+
+      .section-title{
+        font-size:1.8rem;
+      }
+
+      .footer-main ul{
+        columns:1;
+      }
+    }
+  </style>
+</link></head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+<div class="container">
+<h3 class="logo-fixly"><span style="color:#e70013;">TUNI</span><span style="color:#000000;">FIX</span></h3>
+<div class="ms-auto d-flex align-items-center gap-3">
+<select class="form-select lang-select">
+<option>Français</option>
+<option>English</option>
+<option>Arabic</option>
+</select>
+<img alt="Tunisia flag" src="https://flagcdn.com/w40/tn.png" style="width:38px;border-radius:50%;"/>
+</div>
+</div>
+</nav>
+<section class="hero">
+<div class="container position-relative">
+<div class="row align-items-center gy-5">
+<div class="col-lg-6">
+<h1 class="hero-title" data-i18n="index.heroTitle" id="heroTitle">Trouvez un technicien fiable. Ou décrochez votre prochaine mission.</h1>
+<p class="hero-subtitle" data-i18n="index.heroSubtitle" id="heroSubtitle">
+            TUNIFIX connecte les clients et les techniciens en Tunisie pour les services de plomberie,
+            électricité, électroménager, jardinage, peinture, piscine, chaud / froid et plus.
+          </p>
+<div class="hero-actions">
+<a class="btn-main" data-i18n="index.heroClientBtn" href="login-client.html" id="heroClientBtn">Espace client</a>
+<a class="btn-outline-custom" data-i18n="index.heroTechBtn" href="login-technician.html" id="heroTechBtn">Espace technicien</a>
+</div>
+<div class="mini-badges">
+<a class="mini-badge" data-i18n="nav.findTech" href="post.html#directorySection" id="badgeFindTech" style="text-decoration:none"><i class="bi bi-search"></i> Trouver un technicien</a>
+<a class="mini-badge" data-i18n="nav.findJob" href="login-technician.html" id="badgeFindJob" style="text-decoration:none"><i class="bi bi-briefcase"></i> Trouver un travail</a>
+<a class="mini-badge" data-i18n="nav.postNeed" href="post.html#requestFormSection" id="badgePostNeed" style="text-decoration:none"><i class="bi bi-pencil-square"></i> Publier un besoin</a>
+<a class="mini-badge" data-i18n="nav.receiveJobs" href="register-technician.html" id="badgeReceiveJobs" style="text-decoration:none"><i class="bi bi-bell"></i> Recevoir des missions</a>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="hero-visual">
+<div class="hero-card">
+<img alt="Technicien" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+</div>
+<div class="floating-stat top">
+<span class="small" data-i18n="index.heroStatTopLabel" id="heroStatTopLabel">Demandes actives</span>
+<strong data-i18n="index.heroStatTopValue" id="heroStatTopValue">+120 missions</strong>
+</div>
+<div class="floating-stat bottom">
+<span class="small" data-i18n="index.heroStatBottomLabel" id="heroStatBottomLabel">Services populaires</span>
+<strong data-i18n="index.heroStatBottomValue" id="heroStatBottomValue">Électroménager • Piscine</strong>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="text-center">
+<h2 class="section-title" data-i18n="index.servicesTitle" id="servicesTitle">Services principaux</h2>
+<p class="section-subtitle" data-i18n="index.servicesSubtitle" id="servicesSubtitle">
+          Une plateforme unique pour les besoins maison, réparation, installation, entretien et dépannage.
+        </p>
+</div>
+<div class="row g-4">
+<div class="col-md-6 col-lg-3">
+<div class="card service-card text-center">
+<div class="card-body">
+<div class="service-icon-wrap"><div class="service-icon">🔧</div></div>
+<h5 data-i18n="service.plomberie" id="servicePlomberieTitle">Plomberie</h5>
+<p data-i18n="index.servicePlomberieText" id="servicePlomberieText">Fuites, tuyaux, robinets, réparations sanitaires.</p>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="card service-card text-center">
+<div class="card-body">
+<div class="service-icon-wrap"><div class="service-icon">⚡</div></div>
+<h5 data-i18n="service.electricite" id="serviceElectriciteTitle">Électricité</h5>
+<p data-i18n="index.serviceElectriciteText" id="serviceElectriciteText">Prises, câblage, lumières, disjoncteurs et dépannage.</p>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="card service-card text-center">
+<div class="card-body">
+<div class="service-icon-wrap"><div class="service-icon"><svg viewBox="0 0 64 64" width="34" height="34"><rect x="8" y="22" width="32" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path d="M40 26l12-6v24l-12-6z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><line x1="20" y1="34" x2="20" y2="48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><rect x="16" y="48" width="8" height="6" rx="2" fill="currentColor"/></svg></div></div><h5 data-i18n="service.video" id="serviceVideoTitle">Vidéosurveillance</h5>
+<p data-i18n="index.serviceVideoText" id="serviceVideoText">Installation, configuration et maintenance des caméras.</p>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="card service-card text-center">
+<div class="card-body">
+<div class="service-icon-wrap"><div class="service-icon"><svg viewBox="0 0 64 64" width="34" height="34"><rect x="18" y="10" width="28" height="44" rx="6" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="32" cy="34" r="10" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="24" cy="18" r="2" fill="currentColor"/><circle cx="32" cy="18" r="2" fill="currentColor"/><circle cx="40" cy="18" r="2" fill="currentColor"/></svg></div></div><h5 data-i18n="service.appliance" id="serviceApplianceTitle">Électroménager</h5>
+<p data-i18n="index.serviceApplianceText" id="serviceApplianceText">Machine à laver, frigo, four, lave-vaisselle et entretien.</p>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="card service-card text-center">
+<div class="card-body">
+<div class="service-icon-wrap"><div class="service-icon">🪚</div></div>
+<h5 data-i18n="service.wood" id="serviceWoodTitle">Menuiserie</h5>
+<p data-i18n="index.serviceWoodText" id="serviceWoodText">Meubles, portes, étagères, réparations en bois.</p>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="card service-card text-center">
+<div class="card-body">
+<div class="service-icon-wrap"><div class="service-icon">🔥</div></div>
+<h5 data-i18n="service.weld" id="serviceWeldTitle">Soudure</h5>
+<p data-i18n="index.serviceWeldText" id="serviceWeldText">Travaux métalliques, réparations et fabrication sur mesure.</p>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="card service-card text-center">
+<div class="card-body">
+<div class="service-icon-wrap"><div class="service-icon">🧰</div></div>
+<h5 data-i18n="service.diy" id="serviceDiyTitle">Bricolage</h5>
+<p data-i18n="index.serviceDiyText" id="serviceDiyText">Petits travaux et réparations diverses à domicile.</p>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="card service-card text-center">
+<div class="card-body">
+<div class="service-icon-wrap"><div class="service-icon">📦</div></div>
+<h5 data-i18n="service.assembly" id="serviceAssemblyTitle">Montage</h5>
+<p data-i18n="index.serviceAssemblyText" id="serviceAssemblyText">Montage et installation de meubles et équipements.</p>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="card service-card text-center">
+<div class="card-body">
+<div class="service-icon-wrap"><div class="service-icon">🌿</div></div>
+<h5 data-i18n="service.garden" id="serviceGardenTitle">Jardinage</h5>
+<p data-i18n="index.serviceGardenText" id="serviceGardenText">Entretien, tonte, taille, nettoyage et plantation.</p>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="card service-card text-center">
+<div class="card-body">
+<div class="service-icon-wrap"><div class="service-icon">❄️</div></div>
+<h5 data-i18n="service.ac" id="serviceAcTitle">Chaud / Froid</h5>
+<p data-i18n="index.serviceAcText" id="serviceAcText">Climatisation, chauffage, entretien et réparation.</p>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="card service-card text-center">
+<div class="card-body">
+<div class="service-icon-wrap"><div class="service-icon"><svg viewBox="0 0 64 64" width="34" height="34"><rect x="10" y="14" width="30" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path d="M40 19h6c3 0 5 2 5 5v6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="51" y1="30" x2="51" y2="48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><rect x="47" y="48" width="8" height="6" rx="2" fill="currentColor"/></svg></div></div><h5 data-i18n="service.paint" id="servicePaintTitle">Peinture</h5>
+<p data-i18n="index.servicePaintText" id="servicePaintText">Peinture intérieure, extérieure et finitions propres.</p>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="card service-card text-center">
+<div class="card-body">
+<div class="service-icon-wrap"><div class="service-icon">🏊</div></div>
+<h5 data-i18n="service.pool" id="servicePoolTitle">Piscine</h5>
+<p data-i18n="index.servicePoolText" id="servicePoolText">Pompe, filtration, nettoyage et maintenance piscine.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="premium-band">
+<div class="container">
+<div class="text-center mb-5">
+<h2 class="section-title text-white" data-i18n="index.spaceTitle" id="spaceTitle">Choisissez votre espace</h2>
+<p class="section-subtitle text-white" data-i18n="index.spaceSubtitle" id="spaceSubtitle" style="opacity:.86;">
+          Une expérience claire pour les clients et les techniciens.
+        </p>
+</div>
+<div class="row g-4 justify-content-center">
+<div class="col-md-6 col-lg-5">
+<div class="card space-card">
+<div class="card-body">
+<h3 data-i18n="index.clientCardTitle" id="clientCardTitle">Compte client</h3>
+<p data-i18n="index.clientCardText" id="clientCardText">Publiez un besoin, comparez les profils et trouvez rapidement le bon technicien.</p>
+<ul>
+<li data-i18n="index.clientCardItem1" id="clientCardItem1">Créer un compte client</li>
+<li data-i18n="index.clientCardItem2" id="clientCardItem2">Publier une demande</li>
+<li data-i18n="index.clientCardItem3" id="clientCardItem3">Suivre les interventions</li>
+</ul>
+<a class="btn-main" data-i18n="index.clientCardBtn" href="login-client.html" id="clientCardBtn">Ouvrir l’espace client</a>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-5">
+<div class="card space-card">
+<div class="card-body">
+<h3 data-i18n="index.techCardTitle" id="techCardTitle">Compte technicien</h3>
+<p data-i18n="index.techCardText" id="techCardText">Présentez vos services, trouvez des missions et développez votre activité.</p>
+<ul>
+<li data-i18n="index.techCardItem1" id="techCardItem1">Créer un profil professionnel</li>
+<li data-i18n="index.techCardItem2" id="techCardItem2">Recevoir des missions</li>
+<li data-i18n="index.techCardItem3" id="techCardItem3">Gérer votre visibilité</li>
+</ul>
+<a class="btn-main" data-i18n="index.techCardBtn" href="login-technician.html" id="techCardBtn">Ouvrir l’espace technicien</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="footer-main">
+<div class="container">
+<div class="row g-4">
+<div class="col-md-4">
+<h5><span style="color:#e70013;">TUNI</span><span style="color:#ffffff;">FIX</span></h5>
+<p data-i18n="common.footerAbout" id="footerAbout">Plateforme de mise en relation entre clients et techniciens en Tunisie.</p>
+<div class="social-links mt-3">
+<a href="https://www.facebook.com" rel="noopener" target="_blank"><i class="bi bi-facebook"></i> Facebook</a>
+<a href="https://www.instagram.com" rel="noopener" target="_blank"><i class="bi bi-instagram"></i> Instagram</a>
+<a href="https://wa.me/21600000000" rel="noopener" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+<a href="https://www.tiktok.com" rel="noopener" target="_blank"><i class="bi bi-tiktok"></i> TikTok</a>
+</div>
+</div>
+<div class="col-md-4">
+<h6 data-i18n="common.servicesTitle" id="footerServicesTitle">Services</h6>
+<ul>
+<li data-i18n="service.plomberie" id="footerService1">Plomberie</li><li data-i18n="service.electricite" id="footerService2">Électricité</li><li data-i18n="service.video" id="footerService3">Vidéosurveillance</li><li data-i18n="service.appliance" id="footerService4">Électroménager</li><li data-i18n="service.wood" id="footerService5">Menuiserie</li><li data-i18n="service.weld" id="footerService6">Soudure</li><li data-i18n="service.diy" id="footerService7">Bricolage</li><li data-i18n="service.garden" id="footerService8">Jardinage</li><li data-i18n="service.ac" id="footerService9">Chaud / Froid</li><li data-i18n="service.paint" id="footerService10">Peinture</li><li data-i18n="service.pool" id="footerService11">Piscine</li>
+</ul>
+</div>
+<div class="col-md-4">
+<h6 data-i18n="common.contactTitle" id="footerContactTitle">Contact</h6>
+<ul><li>contact@tunifix.tn</li><li>+216 00 000 000</li><li>Tunisie</li></ul>
+</div>
+</div>
+<div class="footer-bottom" data-i18n="common.footerBottom" id="footerBottom">TUNIFIX © 2026 - Tous droits réservés</div>
+</div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
